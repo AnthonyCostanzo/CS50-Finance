@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    History
+{% endblock %}
+
+{% block main %}
+    <table class = "table table-striped">
+        <thead>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Action</th>
+            <th>Date</th>
+
+        </thead>
+        {%for stock in stocks%}
+        <tbody>
+
+            <td>{{(stock["symbol"])}}</td>
+            <td>{{(stock["shares"])}}</td>
+            <td>${{stock["price"]}}</td>
+            <td>
+                {%if stock["action"] == 1%}
+                Purchased
+                {%else%}
+                Sold
+                {%endif%}
+            </td>
+
+            <td>{{stock["date"]}}</td>
+
+        </tbody>
+         {%endfor%}
+
+          </table>
+
+
+{% endblock %}
